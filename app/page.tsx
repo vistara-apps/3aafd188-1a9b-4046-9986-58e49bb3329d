@@ -13,7 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { storage, UserProfile, FastingSession, JournalEntry } from '@/lib/storage';
 import { generateFastingPlan } from '@/lib/openai';
 import { ConnectWallet } from '@coinbase/onchainkit/wallet';
-import { Identity } from '@coinbase/onchainkit/identity';
+import { Identity, Name, Address } from '@coinbase/onchainkit/identity';
 import { useAccount } from 'wagmi';
 import { Clock, TrendingUp, BookOpen, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -269,7 +269,10 @@ export default function Home() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <Identity address={address} className="text-sm" />
+          <Identity address={address} className="text-sm">
+            <Name />
+            <Address />
+          </Identity>
           <Button variant="outline" size="icon">
             <Settings className="w-4 h-4" />
           </Button>
